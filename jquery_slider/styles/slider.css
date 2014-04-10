@@ -1,0 +1,43 @@
+body {
+  background-color: #CFF;
+}
+
+#slider {
+  margin: 20px auto;
+  height: 400px;
+  width: 800px;
+  overflow: hidden;
+  border: 10px solid #999;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+
+#slider > img {
+  float: left;
+  display: none;
+}
+
+#buttons {}
+
+#buttons > a {
+  font-family: Helvetica, sans-serif;
+  font-size: 48px;
+  text-decoration: none;
+  color: #666;
+  height: 50px;
+  width: 600px;
+  text-align: center;
+}
+
+#buttons > a:hover {
+  color: #222;
+}
+
+#buttons > a.left {
+  float: left;
+}
+
+#buttons > a.right {
+  float: right;
+}
