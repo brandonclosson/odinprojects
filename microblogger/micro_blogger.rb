@@ -10,7 +10,7 @@ class MicroBlogger
     @client = JumpstartAuth.twitter
     Klout.api_key = 'r39vz7jf84fpp93yxu64h6p8'
     Bitly.use_api_version_3
-    bitly = Bitly.new('brandonclosson', 'R_886769f8121c4113bd7147cc186b5d38')
+    @bitly = Bitly.new('brandonclosson', 'R_886769f8121c4113bd7147cc186b5d38')
   end
 
   def followers_list
@@ -41,7 +41,7 @@ class MicroBlogger
   end
 
   def shorten_url(url)
-    bitly.shorten(url).short_url
+    @bitly.shorten(url).short_url
   end
 
   def tweet_with_url(message, url)
