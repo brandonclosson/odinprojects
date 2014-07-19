@@ -3,9 +3,13 @@ def bubble_sort(numbers)
     (0...i).to_a.each do |index|
       num1 = numbers[index]
       num2 = numbers[index + 1]
-      if num2 < num1
-        numbers[index] = num2
-        numbers[index + 1] = num1
+      switch = Proc.new {numbers[index] = num2; numbers[index + 1] = num1 }
+      
+      case block_given?
+      when true
+        switch.call if (yield num1, num2) < 0
+      when false
+        switch.call if num2 < num1
       end
     end
   end
@@ -13,3 +17,4 @@ def bubble_sort(numbers)
 end
 
 print bubble_sort([10, 3, 7, 11, 2, 19, 5, 6])
+print bubble_sort(["hello", "h", "hey", "he", "hell"]) { |left, right| right.length - left.length }
