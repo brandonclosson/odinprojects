@@ -1,4 +1,5 @@
 def bubble_sort(numbers)
+
   (2..(numbers.size - 1)).to_a.reverse.each do |i|
     (0...i).to_a.each do |index|
       num1 = numbers[index]
