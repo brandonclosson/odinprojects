@@ -61,12 +61,15 @@ module Enumerable
     count
   end
 
-  def my_map(proc = nil)
+  def my_map(&proc)
+    return self unless proc || block_given?
+
     if proc
-      return self.my_each_with_index { |i, e| self[i] = proc.call(e) }
+      return self.my_each_with_index { |i, e| self[i] = proc.call(i, e) }
     end
     self.my_each_with_index { |i, e| self[i] = yield(e) }
   end
+end
 
 def multiply_elements(elements)
   elements.my_inject(1) { |sum, e| sum *= e }
@@ -100,5 +103,5 @@ puts "\n"
 print numbers.my_map { |n| n ** 2 }
 print "\n"
 second_power = Proc.new { |sum, n| n ** 2 }
-print [1, 2, 3, 4].my_map(second_power)
+print [1, 2, 3, 4].my_map(&second_power)
 print "\n"
