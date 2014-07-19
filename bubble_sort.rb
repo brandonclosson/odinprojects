@@ -6,12 +6,7 @@ def bubble_sort(numbers)
       num2 = numbers[index + 1]
       switch = Proc.new {numbers[index] = num2; numbers[index + 1] = num1 }
       
-      case block_given?
-      when true
-        switch.call if (yield num1, num2) < 0
-      when false
-        switch.call if num2 < num1
-      end
+      block_given? ? (switch.call if (yield num1, num2) < 0) : (switch.call if num2 < num1)
     end
   end
   numbers
